@@ -1,6 +1,30 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Spinnaker } from "next/font/google";
+import { Dancing_Script } from "next/font/google";
+import { Patrick_Hand } from "next/font/google";
 import "./globals.css";
+
+const spinnaker = Spinnaker({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-spinnaker",
+});
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-dancing-script",
+});
+
+const patrickHand = Patrick_Hand({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-patrick-hand",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spinnaker.variable} ${dancingScript.variable} ${patrickHand.variable} antialiased`}
       >
         {children}
       </body>
