@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Spinnaker } from "next/font/google";
 import { Dancing_Script } from "next/font/google";
 import { Patrick_Hand } from "next/font/google";
+import { Architects_Daughter } from "next/font/google";
 import "./globals.css";
 
 const spinnaker = Spinnaker({
@@ -17,6 +18,13 @@ const dancingScript = Dancing_Script({
   weight: ["400"],
   display: "swap",
   variable: "--font-dancing-script",
+});
+
+const architectsDaughter = Architects_Daughter({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-architects_daughter",
 });
 
 const patrickHand = Patrick_Hand({
@@ -49,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spinnaker.variable} ${dancingScript.variable} ${patrickHand.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spinnaker.variable} ${dancingScript.variable} ${patrickHand.variable} ${architectsDaughter.variable} antialiased`}
       >
         {children}
       </body>

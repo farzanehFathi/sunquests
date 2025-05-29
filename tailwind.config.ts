@@ -1,4 +1,3 @@
-import { Dancing_Script } from "next/font/google";
 import type { Config } from "tailwindcss";
 
 export default {
@@ -11,8 +10,12 @@ export default {
   theme: {
     extend: {
       colors: {
+        mainBg: "#FDF8F3",
+        mainText: "#242628",
+        mainAccent: "#fddecf",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -61,6 +64,7 @@ export default {
         spinnaker: ["var(--font-spinnaker)", "sans-serif"],
         dancing_script: ["var(--font-dancing-script)", "sans-serif"],
         patrick_hand: ["var(--font-patrick-hand)", "sans-serif"],
+        architects_daughter: ["var(--font-architects_daughter)", "sans-serif"],
       },
     },
   },
