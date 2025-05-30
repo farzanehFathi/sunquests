@@ -6,6 +6,8 @@ import { Patrick_Hand } from "next/font/google";
 import { Architects_Daughter } from "next/font/google";
 import "./globals.css";
 
+import Header from "@/components/custom/header";
+
 const spinnaker = Spinnaker({
   subsets: ["latin"],
   weight: ["400"],
@@ -57,9 +59,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spinnaker.variable} ${dancingScript.variable} ${patrickHand.variable} ${architectsDaughter.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spinnaker.variable} ${dancingScript.variable} ${patrickHand.variable} ${architectsDaughter.variable} antialiased  bg-mainBg text-mainText`}
       >
-        {children}
+        <div className="  min-h-screen  max-w-6xl mx-auto">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );

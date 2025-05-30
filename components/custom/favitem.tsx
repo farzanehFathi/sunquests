@@ -7,6 +7,8 @@ type FavItemProps = {
   inputType: string;
   InputUnit: string;
   inputDefaultValue: number | string;
+  electOptions?: string[];
+  multi?: boolean;
 };
 
 export default function FavItem({
