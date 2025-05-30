@@ -4,25 +4,57 @@ import { Card, CardContent } from "@/components/ui/card";
 import { DropletIcon, ThermometerIcon, WindIcon } from "lucide-react";
 import CityImage from "./cityImage";
 
+import { scoreWeather } from "@/functions/scoreWeather";
+
 type ForecastCardProps = {
   cityName: string;
-  weatherIcon: string;
+  // weatherIcon: string;
   weatherDesc: string;
   feelsLike: number;
   temp: number;
   humidity: number;
   windSpeed: number;
+  favTempMin: number;
+  favTempMax: number;
+  favHumMin: number;
+  favHumMax: number;
+  favWind: number;
+  favWeatherCondition: string;
 };
 
 export default function ForecastCard({
   cityName,
-  weatherIcon,
+  // weatherIcon,
   weatherDesc,
   feelsLike,
   temp,
   humidity,
   windSpeed,
+  favTempMin,
+  favTempMax,
+  favHumMin,
+  favHumMax,
+  favWind,
+  favWeatherCondition,
 }: ForecastCardProps) {
+  const weatherScore = scoreWeather(
+    {
+      temp,
+      feels_like: feelsLike,
+      humidity,
+      wind: windSpeed,
+      condition: weatherDesc,
+    },
+    {
+      favTempMin,
+      favTempMax,
+      favHumMin,
+      favHumMax,
+      favWind,
+      favWeatherCondition,
+    }
+  );
+
   return (
     <div>
       <Card className="bg-white/25 backdrop-blur text-center grid grid-cols-1 sm:grid-cols-3 py-4 gap-4 border-0 shadow-md transition-all duration-300 ease-in-out hover:cursor-pointer hover:bg-mainAccent/30">
@@ -78,7 +110,7 @@ export default function ForecastCard({
             </div>
           </div>
         </CardContent>
-        <CardContent>2</CardContent>
+        <CardContent>{weatherScore}</CardContent>
       </Card>
     </div>
   );

@@ -14,6 +14,14 @@ export default function Forecasts() {
 
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string>("");
+  const [prefs, setPrefs] = useState({
+    favTempMin: "",
+    favTempMax: "",
+    favHumMin: "",
+    favHumMax: "",
+    favWind: "",
+    favWeatherCondition: "",
+  });
 
   useEffect(() => {
     const fetchWeather = async () => {
@@ -34,6 +42,13 @@ export default function Forecasts() {
     fetchWeather();
   }, [city]);
 
+  useEffect(() => {
+    const stored = localStorage.getItem("weatherPrefs");
+    if (stored) {
+      setPrefs(JSON.parse(stored));
+    }
+  }, []);
+
   return (
     <div className="font-architects_daughter">
       {error && (
@@ -46,12 +61,18 @@ export default function Forecasts() {
         <div className="m-3 ">
           <ForecastCard
             cityName={weather.name}
-            weatherIcon={weather.weather[0].icon}
+            // weatherIcon={weather.weather[0].icon}
             weatherDesc={weather.weather[0].description}
             windSpeed={weather.wind.speed}
             temp={weather.main.temp}
             feelsLike={weather.main.feels_like}
             humidity={weather.main.humidity}
+            favTempMin={Number(prefs.favTempMin)}
+            favTempMax={Number(prefs.favTempMax)}
+            favHumMin={Number(prefs.favHumMin)}
+            favHumMax={Number(prefs.favHumMax)}
+            favWind={Number(prefs.favWind)}
+            favWeatherCondition={prefs.favWeatherCondition}
           />
         </div>
       )}

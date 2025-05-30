@@ -19,6 +19,17 @@ export default function Home() {
     const city = formData.get("city1") as string;
     if (!city) return;
 
+    const prefs = {
+      favTempMin: formData.get("favTempMin"),
+      favTempMax: formData.get("favTempMax"),
+      favHumMin: formData.get("favHumMin"),
+      favHumMax: formData.get("favHumMax"),
+      favWind: formData.get("favWind"),
+      favWeatherCondition: formData.get("favWeatherCondition"),
+    };
+
+    localStorage.setItem("weatherPrefs", JSON.stringify(prefs));
+
     router.push(`/forecasts?city=${encodeURIComponent(city)}`);
   };
 
